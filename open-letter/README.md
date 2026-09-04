@@ -2,13 +2,16 @@
 
 The definition says what humane AI means. This says why it matters.
 
-Written for people outside the technical conversation: the users, parents, clinicians, and legislators who live with what gets built. Same contributor base as the definition, different audience. A definition without a motive convinces no one who was not already in the room.
+Written by Erika Anderson and the co-organizers and published ahead of the October session, the letter is signed by anyone whose work touches this question: researchers, policy people, practitioners, clinicians, parents, and the people who use these systems. It is addressed to the readers who will never open a benchmark paper but will live with what gets built.
 
-## How it gets written
+The letter is not a workshop output. It comes first. The session that follows is where the people who signed it work out what the words in it actually mean.
 
-1. Every submitted position statement includes a short personal answer to why this matters, in the author's own voice.
-2. Erika Anderson drafts the letter from those answers, keeping the specific images and staying out of institutional language.
-3. The draft is circulated with the pre-read on 8 October. Participants sign it, amend it, or add to it.
-4. Published here under CC BY 4.0 alongside the definition, and offered as an op-ed.
+## Signing
 
-Anyone who submitted a statement may sign, whether or not they were in the room. Signatories are listed in `CONTRIBUTORS.md`.
+Signatures are collected at the site and published here after confirmation. Anyone may sign; a confirmed email is required so the list stays trustworthy.
+
+Signatories are listed in `signatories.md`.
+
+## License
+
+CC BY 4.0, like everything else in this repository.

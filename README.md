@@ -10,7 +10,7 @@ An open-source definition of "humane AI", drafted in a working session co-locate
 |---|---|
 | `index.html` | The public site: why, format, who, what we're looking for, selection, submission form |
 | `definition/` | The definition itself (artifact 1). `v1.0.md` is the first release, drafted in the room on 15 October 2026. Later versions are added as new files; the latest is always linked from `definition/README.md` |
-| `open-letter/` | The open letter: why this matters, drawn from contributors' own words and signed by them, written for people outside the technical conversation |
+| `open-letter/` | The open letter: why this matters. Written by the organizers, published ahead of the session, and open for anyone to sign |
 | `white-paper/` | The companion white paper (artifact 2): every accepted position statement plus a synthesis of where the traditions converge and collide |
 | `adoption-map.md` | The adoption map (artifact 3): who would have to take up the definition for anything to change, and who can reach them |
 | `pre-reads/` | Material circulated to participants one week before the session: the synthesis brief and the framing documents for the four frameworks (ART, HumaneBench, policy language, measurement & verification) |
