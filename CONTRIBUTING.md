@@ -10,8 +10,8 @@ The definition is versioned. Anyone can propose a change.
 
 ## Versioning
 
-- `v0.1`: drafted in the room on 15 October 2026.
-- Patch versions (`v0.1.1`) fix wording without changing meaning.
+- `v1.0`: drafted in the room on 15 October 2026.
+- Patch versions (`v1.0.1`) fix wording without changing meaning.
 - Minor versions (`v0.2`) change or add a dimension of the definition.
 - Every version is a git tag. The file for a version is never rewritten after it is tagged; changes go into the next version.
 
