@@ -74,15 +74,16 @@
   nav.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
   .brand { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 16px; color: var(--ink); letter-spacing: .01em; white-space: nowrap; }
   .brand:hover { text-decoration: none; color: var(--violet); }
-  nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; font-size: 13.5px; font-weight: 500; overflow-x: auto; }
+  nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; font-size: 13.5px; font-weight: 500; min-width: 0; overflow: hidden; }
   nav.top ul a { color: var(--ink-soft); white-space: nowrap; }
   nav.top ul a:hover { color: var(--violet); text-decoration: none; }
   nav.top .cta {
+    flex-shrink: 0;
     background: var(--violet); color: #fff; padding: 7px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 600; white-space: nowrap;
     transition: background .15s;
   }
   nav.top .cta:hover { background: var(--violet-deep); text-decoration: none; color: #fff; }
-  @media (max-width: 720px) { nav.top ul { display: none; } }
+  @media (max-width: 760px) { nav.top ul { display: none; } }
 
   /* hero */
   header.hero { padding: 64px 0 40px; text-align: center; }
@@ -267,7 +268,7 @@
   <div class="wrap">
     <a class="brand" href="#top">Defining Humane AI</a>
     <ul>
-      <li><a href="#why">Why it matters</a></li>
+      <li><a href="#why">Why</a></li>
       <li><a href="#format">Format</a></li>
       <li><a href="#who">Who</a></li>
       <li><a href="#what">Statement</a></li>
