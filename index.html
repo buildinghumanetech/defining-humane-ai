@@ -1,4 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><title>Defining Humane AI</title></head><body><title>Defining Humane AI</title>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><title>Defining Humane AI</title></head><body>
+<title>Defining Humane AI</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
 <style>
   :root {
@@ -412,7 +413,7 @@
     <div class="wrap">
       <span class="eyebrow">Call for participation</span>
       <h2>Submit a position statement</h2>
-      <p>Answer the four questions below, or paste a link to a one to two page statement you have already written. Submitting sends an email to the organizers from your own mail client, so you can attach a PDF before it goes.</p>
+      <p>Answer the four questions below, or paste a link to a one to two page statement you have already written. Submitting sends it straight to the organizers; you will see a confirmation here and hear back by 18 September.</p>
 
       <div class="steps">
         <div class="step"><span class="date">16 September</span><b>Statements due</b>23:59 anywhere on Earth.</div>
@@ -422,6 +423,7 @@
 
       <form class="card" id="form" novalidate>
         <div class="grid2">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
           <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
           <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
           <div class="field full"><label for="affil">Affiliation and role</label><input type="text" id="affil" name="affil" placeholder="e.g. Trust &amp; Safety lead, Acme AI" required></div>
@@ -459,7 +461,7 @@
           <div class="field full">
             <label for="link">Link to a written statement <small>optional, if you would rather not use the boxes above</small></label>
             <input type="url" id="link" name="link" placeholder="https://">
-            <div class="hint">A PDF can also be attached to the email this form opens.</div>
+            <div class="hint">Google Drive, Dropbox, or any public link to a PDF works. Make sure the link is viewable by anyone.</div>
           </div>
 
           <div class="field full">
@@ -469,10 +471,10 @@
         </div>
 
         <div class="form-foot">
-          <div class="hint">Nothing is stored on this page. Submitting opens a prefilled email to erika@buildinghumanetech.com; review it, attach a PDF if you like, and send.</div>
-          <button class="btn primary" type="submit">Open email to submit</button>
+          <div class="hint">Your statement goes to the organizers only. Questions: <a href="mailto:erika@buildinghumanetech.com">erika@buildinghumanetech.com</a>.</div>
+          <button class="btn primary" type="submit" id="submitBtn">Submit statement</button>
         </div>
-        <div class="success" id="success" role="status"><strong>Your email is ready to send.</strong>If it didn't open, copy the text below into a message to <a href="mailto:erika@buildinghumanetech.com">erika@buildinghumanetech.com</a>.<pre id="fallback" style="white-space:pre-wrap;font:13px/1.5 ui-monospace,Menlo,monospace;margin:10px 0 0;max-height:220px;overflow:auto"></pre></div>
+        <div class="success" id="success" role="status"></div>
       </form>
     </div>
   </section>
@@ -511,17 +513,21 @@
   <div class="wrap">
     <div class="ornament" aria-hidden="true"><i></i></div>
     <div>Co-located with the Ninth AAAI/ACM Conference on AI, Ethics, and Society (AIES 2026), Malmö Live, 12–14 October 2026.</div>
+    <div>This site and the repository behind it: <a href="https://github.com/buildinghumanetech/defining-humane-ai">github.com/buildinghumanetech/defining-humane-ai</a>.</div>
     <div>The session's output, an open-source definition of humane AI, is maintained in a public repository by <a href="https://www.buildinghumanetech.com">Building Humane Technology</a> and released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. See also <a href="https://humanebench.ai">HumaneBench</a>.</div>
   </div>
 </footer>
 
 <script>
 (function(){
+  // Form backend. Set this to the Formspree form ID (e.g. "xpwzabcd").
+  var FORMSPREE_ID = "maeybqnw";
+  var ENDPOINT = "https://formspree.io/f/" + FORMSPREE_ID;
+
   var form = document.getElementById('form');
   var success = document.getElementById('success');
-  var fallback = document.getElementById('fallback');
+  var btn = document.getElementById('submitBtn');
 
-  // live counters
   document.querySelectorAll('textarea[data-max]').forEach(function(t){
     var c = document.querySelector('.counter[data-for="'+t.id+'"]');
     var max = +t.dataset.max;
@@ -530,46 +536,43 @@
   });
 
   function v(id){ return (document.getElementById(id).value || '').trim(); }
+  function show(html, ok){ success.innerHTML = html; success.classList.add('show'); success.style.borderColor = ok ? '' : '#B4382C'; success.scrollIntoView({block:'nearest', behavior:'smooth'}); }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var name = v('name'), email = v('email'), affil = v('affil'), link = v('link');
     var seatEl = form.querySelector('input[name=seat]:checked');
     var missing = [];
-    if(!name) missing.push('name'); if(!email) missing.push('email'); if(!affil) missing.push('affil'); if(!seatEl) missing.push('seat');
-    var hasAnswers = v('q1') || v('q3'); if(!hasAnswers && !link) missing.push('q1');
+    if(!name) missing.push('name'); if(!email || email.indexOf('@') < 1) missing.push('email'); if(!affil) missing.push('affil'); if(!seatEl) missing.push('seat');
+    if(!(v('q1') || v('q3')) && !link) missing.push('q1');
     if(missing.length){
       var first = missing[0] === 'seat' ? form.querySelector('input[name=seat]') : document.getElementById(missing[0]);
+      show('<strong>A few fields still need filling in.</strong>Name, email, affiliation, and a seat are required, plus either your answers or a link to a written statement.', false);
       first.focus(); first.scrollIntoView({block:'center', behavior:'smooth'});
       return;
     }
-    var seat = seatEl.value;
-    var aies = form.querySelector('input[name=aies]').checked ? 'Yes' : 'No';
-    var pub = form.querySelector('input[name=publish]').checked ? 'Yes' : 'No';
-    var lines = [
-      'Position statement for Defining Humane AI (AIES 2026 co-located session)',
-      '',
-      'Name: ' + name,
-      'Email: ' + email,
-      'Affiliation and role: ' + affil,
-      'Seat: ' + seat,
-      'Attending AIES: ' + aies,
-      'Consent to publish statement: ' + pub,
-      link ? 'Link to statement: ' + link : '',
-      '',
-      '1. Your definition', v('q1') || '(see attached)', '',
-      '2. Where it comes from', v('q2') || '(see attached)', '',
-      '3. Where it fails', v('q3') || '(see attached)', '',
-      '4. What v0.1 must contain, and what you would use it for', v('q4') || '(see attached)', '',
-      'PDF attached: (attach if applicable)'
-    ].filter(function(l){ return l !== null; });
-    var body = lines.join('\n');
-    var subject = 'Position statement: ' + name + ' (' + seat + ')';
-    var href = 'mailto:erika@buildinghumanetech.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    fallback.textContent = 'To: erika@buildinghumanetech.com\nSubject: ' + subject + '\n\n' + body;
-    success.classList.add('show');
-    window.location.href = href;
-    success.scrollIntoView({block:'nearest', behavior:'smooth'});
+    var payload = {
+      _subject: 'Position statement: ' + name + ' (' + seatEl.value + ')',
+      _replyto: email,
+      name: name, email: email, affiliation: affil, seat: seatEl.value,
+      attending_aies: form.querySelector('input[name=aies]').checked ? 'Yes' : 'No',
+      consent_to_publish: form.querySelector('input[name=publish]').checked ? 'Yes' : 'No',
+      link_to_statement: link || '',
+      q1_definition: v('q1'), q2_where_from: v('q2'), q3_where_it_fails: v('q3'), q4_v01_and_use: v('q4'),
+      _gotcha: (form.querySelector('input[name=_gotcha]').value || '')
+    };
+    btn.disabled = true; var old = btn.textContent; btn.textContent = 'Sending…';
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function(r){ return r.ok ? r.json().catch(function(){ return {}; }) : r.json().then(function(j){ throw new Error((j && j.errors && j.errors.map(function(x){return x.message}).join('; ')) || ('HTTP ' + r.status)); }); })
+      .then(function(){
+        show('<strong>Received. Thank you, ' + name.split(' ')[0] + '.</strong>Your statement is with the organizers. Everyone who submits hears back by 18 September.', true);
+        form.querySelectorAll('input, textarea, select').forEach(function(el){ if(el.name !== '_gotcha') el.disabled = true; });
+        btn.textContent = 'Submitted'; 
+      })
+      .catch(function(err){
+        btn.disabled = false; btn.textContent = old;
+        show('<strong>That didn\'t go through.</strong>Please try again in a moment, or email your statement to <a href="mailto:erika@buildinghumanetech.com?subject=' + encodeURIComponent('Position statement: ' + name) + '">erika@buildinghumanetech.com</a>. (' + (err && err.message ? err.message : 'network error') + ')', false);
+      });
   });
 })();
 </script>

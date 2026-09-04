@@ -2,7 +2,7 @@
 
 An open-source definition of "humane AI", drafted in a working session co-located with AIES 2026 (Malmö, 15 October 2026) and maintained here afterward.
 
-**Site:** the call for participation and submission form live at the root of this repo (`index.html`), served via GitHub Pages.
+**Site:** https://buildinghumanetech.github.io/defining-humane-ai/ (the call for participation and submission form; `index.html` at the root of this repo, served via GitHub Pages).
 
 ## What is in this repo
 
