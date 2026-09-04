@@ -1,0 +1,576 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><title>Defining Humane AI</title></head><body><title>Defining Humane AI</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --cream: #FFF4E0;
+    --cream-deep: #F7E9CC;
+    --surface: #FFFBF2;
+    --ink: #1B1A17;
+    --ink-soft: #5F5A50;
+    --ink-faint: #8A8377;
+    --line: #E6D8BB;
+    --violet: #5539EC;
+    --violet-deep: #4229C9;
+    --violet-wash: #ECE8FD;
+    --ok: #2E7D4F;
+    --shadow: 0 1px 0 rgba(27,26,23,.04), 0 12px 32px -16px rgba(85,57,236,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cream: #171522;
+      --cream-deep: #1F1C2E;
+      --surface: #201D2D;
+      --ink: #F3ECDC;
+      --ink-soft: #B8B0A0;
+      --ink-faint: #857E70;
+      --line: #35304A;
+      --violet: #A597FF;
+      --violet-deep: #C0B6FF;
+      --violet-wash: #2A2545;
+      --ok: #7FD1A0;
+      --shadow: 0 1px 0 rgba(0,0,0,.2), 0 12px 32px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream: #171522;
+    --cream-deep: #1F1C2E;
+    --surface: #201D2D;
+    --ink: #F3ECDC;
+    --ink-soft: #B8B0A0;
+    --ink-faint: #857E70;
+    --line: #35304A;
+    --violet: #A597FF;
+    --violet-deep: #C0B6FF;
+    --violet-wash: #2A2545;
+    --ok: #7FD1A0;
+    --shadow: 0 1px 0 rgba(0,0,0,.2), 0 12px 32px -16px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--violet); text-decoration: none; }
+  a:hover { color: var(--violet-deep); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  :focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* nav */
+  nav.top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--cream) 88%, transparent);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  .brand { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 16px; color: var(--ink); letter-spacing: .01em; white-space: nowrap; }
+  .brand:hover { text-decoration: none; color: var(--violet); }
+  nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; font-size: 13.5px; font-weight: 500; overflow-x: auto; }
+  nav.top ul a { color: var(--ink-soft); white-space: nowrap; }
+  nav.top ul a:hover { color: var(--violet); text-decoration: none; }
+  nav.top .cta {
+    background: var(--violet); color: #fff; padding: 7px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 600; white-space: nowrap;
+    transition: background .15s;
+  }
+  nav.top .cta:hover { background: var(--violet-deep); text-decoration: none; color: #fff; }
+  @media (max-width: 720px) { nav.top ul { display: none; } }
+
+  /* hero */
+  header.hero { padding: 84px 0 56px; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--violet);
+  }
+  h1 {
+    font-family: "Lora", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(44px, 8vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -.01em;
+    margin: 18px 0 0;
+    text-wrap: balance;
+  }
+  .ornament {
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    margin: 28px auto 26px; width: 220px; color: var(--violet);
+  }
+  .ornament::before, .ornament::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: .55; }
+  .ornament i { display: block; width: 9px; height: 9px; border: 1.5px solid currentColor; transform: rotate(45deg); margin: 0 10px; }
+  .lede {
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(19px, 2.4vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 34em;
+    margin: 0 auto;
+    text-wrap: pretty;
+  }
+  .lede em { color: var(--ink); }
+  .facts {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 14px;
+    margin: 32px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink-soft);
+  }
+  .facts li { display: flex; align-items: center; gap: 8px; }
+  .facts li + li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+  .facts strong { color: var(--ink); font-weight: 600; }
+  .hero-actions { display: flex; justify-content: center; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 15px;
+    border: 1px solid transparent; cursor: pointer; font-family: inherit;
+    transition: transform .12s, background .15s, border-color .15s;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn.primary { background: var(--violet); color: #fff; }
+  .btn.primary:hover { background: var(--violet-deep); color: #fff; }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn.ghost:hover { border-color: var(--violet); color: var(--violet); }
+
+  /* sections */
+  main { padding-bottom: 40px; }
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  section .eyebrow { margin-bottom: 6px; }
+  h2 {
+    font-family: "Lora", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.18;
+    margin: 0 0 20px;
+    text-wrap: balance;
+    letter-spacing: -.005em;
+  }
+  h3 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; margin: 0 0 10px; }
+  p { max-width: 64ch; margin: 0 0 16px; text-wrap: pretty; }
+  p:last-child { margin-bottom: 0; }
+  .callout {
+    background: var(--violet-wash);
+    border-left: 3px solid var(--violet);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    max-width: 64ch;
+    margin: 24px 0 0;
+    font-size: 16px;
+  }
+
+  /* definition list rows */
+  .rows { margin-top: 8px; }
+  .row {
+    display: grid; grid-template-columns: 200px 1fr; gap: 20px;
+    padding: 18px 0; border-top: 1px solid var(--line);
+  }
+  .row:last-child { border-bottom: 1px solid var(--line); }
+  .row .k { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.35; }
+  .row .k small { display: block; font-family: "Inter", sans-serif; font-weight: 500; font-size: 12.5px; color: var(--ink-faint); margin-top: 3px; letter-spacing: .02em; }
+  .row .v { font-size: 15.5px; color: var(--ink-soft); max-width: 56ch; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; gap: 6px; } }
+
+  /* agenda */
+  .agenda { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15.5px; }
+  .agenda td { padding: 14px 16px 14px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  .agenda tr:last-child td { border-bottom: 1px solid var(--line); }
+  .agenda td.t { width: 84px; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--violet); font-weight: 600; }
+  .agenda td.w strong { font-weight: 600; display: block; }
+  .agenda td.w span { color: var(--ink-soft); font-size: 14.5px; display: block; margin-top: 2px; max-width: 58ch; }
+
+  /* lists */
+  ol.q { counter-reset: q; list-style: none; margin: 8px 0 0; padding: 0; max-width: 64ch; }
+  ol.q li { counter-increment: q; position: relative; padding: 16px 0 16px 48px; border-top: 1px solid var(--line); }
+  ol.q li:last-child { border-bottom: 1px solid var(--line); }
+  ol.q li::before {
+    content: counter(q); position: absolute; left: 0; top: 16px;
+    width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--violet); color: var(--violet);
+    display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  ol.q li strong { display: block; font-weight: 600; margin-bottom: 2px; }
+  ol.q li span { color: var(--ink-soft); font-size: 15.5px; }
+  ul.plain { list-style: none; margin: 8px 0 0; padding: 0; max-width: 64ch; }
+  ul.plain li { position: relative; padding: 12px 0 12px 22px; border-top: 1px solid var(--line); font-size: 15.5px; }
+  ul.plain li:last-child { border-bottom: 1px solid var(--line); }
+  ul.plain li::before { content: ""; position: absolute; left: 0; top: 21px; width: 7px; height: 7px; transform: rotate(45deg); border: 1.5px solid var(--violet); }
+  ul.plain li strong { font-weight: 600; }
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 8px; }
+  @media (max-width: 640px) { .twocol { grid-template-columns: 1fr; gap: 20px; } }
+  .twocol ul.plain li::before { border-color: var(--ink-faint); }
+  .twocol .is ul.plain li::before { border-color: var(--ok); background: var(--ok); }
+
+  /* form */
+  section.submit { background: var(--cream-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 64px 0; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 32px; box-shadow: var(--shadow);
+    margin-top: 28px;
+  }
+  @media (max-width: 600px) { .card { padding: 22px 18px; } }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+  label { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+  label small { font-weight: 400; color: var(--ink-faint); }
+  .hint { font-size: 13px; color: var(--ink-faint); line-height: 1.45; }
+  input[type=text], input[type=email], input[type=url], textarea, select {
+    font: inherit; font-size: 15.5px; color: var(--ink);
+    background: var(--cream); border: 1px solid var(--line); border-radius: 8px;
+    padding: 11px 13px; width: 100%;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 3px color-mix(in srgb, var(--violet) 18%, transparent); }
+  textarea { min-height: 120px; resize: vertical; line-height: 1.55; }
+  select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--ink-faint) 50%), linear-gradient(135deg, var(--ink-faint) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 36px; }
+  .seats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 600px) { .seats { grid-template-columns: 1fr; } }
+  .seat { position: relative; }
+  .seat input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .seat span {
+    display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--cream);
+    font-size: 14px; font-weight: 500; line-height: 1.35; transition: border-color .15s, background .15s;
+  }
+  .seat span small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 12.5px; margin-top: 2px; }
+  .seat input:checked + span { border-color: var(--violet); background: var(--violet-wash); color: var(--ink); }
+  .seat input:focus-visible + span { outline: 2px solid var(--violet); outline-offset: 2px; }
+  .check { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; font-weight: 400; cursor: pointer; }
+  .check input { margin-top: 4px; accent-color: var(--violet); width: 16px; height: 16px; }
+  .counter { font-size: 12.5px; color: var(--ink-faint); text-align: right; font-variant-numeric: tabular-nums; }
+  .counter.over { color: #B4382C; }
+  .form-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+  .form-foot .hint { max-width: 40ch; }
+  .success { display: none; padding: 20px 22px; border-radius: 10px; background: var(--violet-wash); border: 1px solid var(--violet); margin-top: 18px; font-size: 15px; }
+  .success strong { display: block; margin-bottom: 4px; font-weight: 600; }
+  .success.show { display: block; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 20px; }
+  @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+  .step { border-top: 2px solid var(--violet); padding-top: 12px; font-size: 14.5px; color: var(--ink-soft); }
+  .step b { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; font-size: 15px; }
+  .step .date { font-family: "Lora", Georgia, serif; color: var(--violet); font-size: 17px; display: block; margin-bottom: 4px; }
+
+  /* people & glance */
+  .org { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; max-width: 64ch; }
+  .org .who { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 17px; }
+  .org .role { color: var(--ink-soft); font-size: 15px; }
+  .glance { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-top: 8px; }
+  .glance > div { background: var(--surface); padding: 16px 18px; }
+  .glance .k { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 600; }
+  .glance .v { font-size: 15.5px; font-weight: 500; }
+  @media (max-width: 520px) { .glance { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0 64px; font-size: 14px; color: var(--ink-soft); }
+  footer .wrap { display: flex; flex-direction: column; gap: 14px; }
+  footer .ornament { margin: 0 0 8px; width: 120px; }
+</style>
+
+<nav class="top" aria-label="Page">
+  <div class="wrap">
+    <a class="brand" href="#top">Defining Humane AI</a>
+    <ul>
+      <li><a href="#why">Why</a></li>
+      <li><a href="#format">Format</a></li>
+      <li><a href="#who">Who</a></li>
+      <li><a href="#what">Statement</a></li>
+      <li><a href="#selection">The room</a></li>
+    </ul>
+    <a class="cta" href="#submit">Submit a statement</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">Working session · co-located with AIES 2026 · Malmö</span>
+    <h1>Defining Humane AI</h1>
+    <div class="ornament" aria-hidden="true"><i></i></div>
+    <p class="lede"><em>humane AI</em>, n. Used daily by researchers, regulators, and product teams; defined the same way by none of them. On 15 October, sixteen people from those worlds sit in one room and draft version 0.1 of a shared, public definition.</p>
+    <ul class="facts">
+      <li><strong>15 October 2026</strong> 13:00–16:00 CEST</li>
+      <li><strong>Malmö University</strong></li>
+      <li><strong>16 seats</strong> open call, curated</li>
+      <li>Statements due <strong>16 September</strong></li>
+    </ul>
+    <div class="hero-actions">
+      <a class="btn primary" href="#submit">Submit a position statement</a>
+      <a class="btn ghost" href="#format">See the format</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section id="why">
+      <span class="eyebrow">Why</span>
+      <h2>The term is doing real work with no shared meaning</h2>
+      <p>"Humane AI" now appears in benchmark papers, EU and US policy language, product principles, and funding calls. Each community grounds it differently: in accountability frameworks, in care ethics, in engagement metrics, in transparency obligations. The result is a term that everyone can claim and no one can be held to.</p>
+      <p>This matters because the stakes are no longer academic. Regulators are writing chatbot-safety law, evaluation teams are scoring frontier models on wellbeing, and companies are shipping "humane" features, all against definitions that do not interoperate. A field that cannot say what it means by its central term cannot measure progress toward it.</p>
+      <p>The deeper problem is buy-in. Without a shared measure, no team knows where it is falling short, and no measure holds unless the people it is applied to accept the definition underneath it. That means policy people, product people, the public, philosophers, and researchers all have to recognize themselves in the same sentence. No single community can write that sentence for the others, and the frontier labs will not always choose what is good for people; what is good should not be theirs alone to decide.</p>
+      <div class="callout">This session exists to close that gap the only way it can be closed: by putting the people who hold the different definitions in one room for a generative, working conversation, not by publishing one more framework into the pile.</div>
+    </section>
+
+    <section id="frameworks">
+      <span class="eyebrow">Starting material</span>
+      <h2>Four frameworks on the table</h2>
+      <p>Short framing talks open the session. Each presents an existing framework in ten minutes, as material to synthesize rather than positions to defend. The hard part they share is translation: "what do we want AI to do, and what is humane" are philosophical and sociological questions, and a usable definition has to carry them into a quantitative expression that people across communities trust.</p>
+      <div class="rows">
+        <div class="row"><div class="k">ART<small>Dignum et al., 2019</small></div><div class="v">Accountability, Responsibility, Transparency: the foundational definition from the HumanE-AI-Net work, written years before "humane AI" became industry vocabulary.</div></div>
+        <div class="row"><div class="k">HumaneBench<small>Building Humane Technology, 2025</small></div><div class="v">Eight operationalized principles, from respecting user attention to prioritizing long-term wellbeing, tested across 800 scenarios on 15 frontier models.</div></div>
+        <div class="row"><div class="k">Policy language<small>EU AI Act, US state statutes</small></div><div class="v">What "humane" means when law reaches for it: transparency obligations, chatbot-safety statutes, and the definitions regulators are enforcing now.</div></div>
+        <div class="row"><div class="k">Measurement &amp; verification<small>Evals in production</small></div><div class="v">A definition is only as good as its verifiability: what it takes to test a system against humane behavior in practice, and where working definitions break when teams try to ship against them.</div></div>
+      </div>
+    </section>
+
+    <section id="format">
+      <span class="eyebrow">Format</span>
+      <h2>Three hours, one artifact</h2>
+      <p>This is a working session, not a mini-conference. The room is capped at sixteen so that every participant contributes to the output: a public, versioned definition of humane AI, released as an open-source definition. It lives in a public repository under Building Humane Technology, where v0.1 is the first tagged release, anyone can propose a change by pull request, and the co-organizers review what merges. The definition and all pre-reads are released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: copy it, adapt it, build on it, with credit. v0.1 ships with named contributors, the points that remain contested, and a list of who has committed to use the definition and for what.</p>
+      <table class="agenda">
+        <tr><td class="t">13:00</td><td class="w"><strong>Welcome and framing</strong><span>What a shared definition needs to do, and what version 0.1 will and won't claim.</span></td></tr>
+        <tr><td class="t">13:15</td><td class="w"><strong>Framing talks</strong><span>Four frameworks in ten minutes each, presented by organizers and invited participants: ART, HumaneBench, policy language, measurement &amp; verification.</span></td></tr>
+        <tr><td class="t">14:00</td><td class="w"><strong>Synthesis, round one</strong><span>Small groups in conversation: where the frameworks agree, where they differ, and where they go silent. Output: candidate dimensions.</span></td></tr>
+        <tr><td class="t">14:45</td><td class="w"><strong>Break</strong></td></tr>
+        <tr><td class="t">15:00</td><td class="w"><strong>Synthesis, round two</strong><span>Groups draft definition language against the dimensions. Facilitators consolidate live.</span></td></tr>
+        <tr><td class="t">15:40</td><td class="w"><strong>Plenary</strong><span>Read the draft aloud. Agree what ships as v0.1, what's still open, who commits to using it, and how changes are proposed after today.</span></td></tr>
+        <tr><td class="t">16:00</td><td class="w"><strong>Close</strong></td></tr>
+      </table>
+    </section>
+
+    <section id="who">
+      <span class="eyebrow">Who should participate</span>
+      <h2>Five constituencies, one room</h2>
+      <p>We are selecting for people who hold a working definition of humane AI and have hit its limits. A definition that lasts needs buy-in from five constituencies: researchers, philosophers, policy people, product people, and the public. The room is built from three seat types, roughly a third each, that between them cover all five.</p>
+      <div class="rows">
+        <div class="row"><div class="k">Researchers &amp; philosophers</div><div class="v">AI ethics, HCI, evaluation, and philosophy of technology, including care ethics and moral philosophy. You publish under the term or measure against it. You should care because a definition the field cannot agree on cannot anchor a benchmark, a review criterion, or a literature.</div></div>
+        <div class="row"><div class="k">Policy &amp; regulation</div><div class="v">Regulators, standards bodies, legislative staff, and policy researchers writing or interpreting AI welfare, chatbot-safety, and transparency rules. You should care because enforceable language needs a definition that survives contact with counsel and with engineers.</div></div>
+        <div class="row"><div class="k">Practitioners</div><div class="v">Product, trust &amp; safety, model evaluation, and design leads shipping "humane" or "wellbeing" features at AI companies and platforms. You should care because you are being held to the term today, by users and by law, with no shared standard for what meeting it looks like.</div></div>
+      </div>
+      <p style="margin-top:20px">The public does not submit position statements, so civil society, youth advocates, and funders who represent users' interests are welcome in any seat and weighted toward the policy seat. Participation is in person; there is no remote option.</p>
+    </section>
+
+    <section id="what">
+      <span class="eyebrow">What we are looking for</span>
+      <h2>Position statements, not papers</h2>
+      <p>One to two pages. The statement is the input to synthesis, so its job is to state a definition clearly and show where it breaks, not to argue for it as the winner. Answer four questions:</p>
+      <ol class="q">
+        <li><strong>Your definition.</strong><span>How you or your community currently define humane AI, in your own words or by reference to a framework you use.</span></li>
+        <li><strong>Where it comes from.</strong><span>The tradition, regulation, product context, or evidence base it rests on.</span></li>
+        <li><strong>Where it fails.</strong><span>A concrete case where the definition was ambiguous, unmeasurable, unenforceable, or in conflict with another definition you had to work alongside.</span></li>
+        <li><strong>What v0.1 must contain, and what you would use it for.</strong><span>The one or two things a shared definition would need to include for you to adopt it, and the concrete thing you would apply it to: a benchmark, a policy draft, a product principle, a review criterion.</span></li>
+      </ol>
+      <p style="margin-top:20px">Statements are non-archival and non-anonymous. Plain prose in any format; no template, no page style requirements, no references needed unless they help. Write it in an afternoon.</p>
+    </section>
+
+    <section id="selection">
+      <span class="eyebrow">How we build the room</span>
+      <h2>Curated for complementary perspectives and productive collaboration</h2>
+      <p>The call is open to anyone whose work touches this question. The organizers will read every statement and invite sixteen people to the working session. This is a working-group selection process, not peer review or paper ranking. Statements are not scored against one another; we are composing a small group with complementary perspectives, experiences, and contexts.</p>
+      <p>We will consider:</p>
+      <ul class="plain">
+        <li><strong>A real definition with a real challenge.</strong> Preference for specific cases where a definition has been tested, stretched, or broken in practice.</li>
+        <li><strong>Complementary perspectives.</strong> We want genuinely different definitions and approaches. A strong submission may not be selected if a similar perspective is already well represented.</li>
+        <li><strong>Balance across contexts.</strong> We seek a mix of constituencies, regions, institutions, and organizational sizes.</li>
+        <li><strong>Readiness to contribute.</strong> Every seat is a working seat: writing, listening, questioning, and building together.</li>
+        <li><strong>Willingness to apply the work.</strong> Preference for people who can take v0.1 back to their team, organization, community, or lab and test it in practice.</li>
+      </ul>
+      <p style="margin-top:20px">With the author's consent, every submitted statement will be published alongside v0.1, so the contributor base extends beyond the room and the synthesis remains traceable to its inputs.</p>
+    </section>
+
+    <section id="scope">
+      <span class="eyebrow">Scope</span>
+      <h2>What this is, and is not</h2>
+      <div class="twocol">
+        <div>
+          <h3>This is not</h3>
+          <ul class="plain">
+            <li>A paper track. Nothing is archived, reviewed, or cited as a publication.</li>
+            <li>A venue to present your framework as the answer. Frameworks enter as material to synthesize.</li>
+            <li>A general AI ethics discussion. The output is one definition of one term.</li>
+            <li>A product showcase or a demo session.</li>
+            <li>A debate with a winner, or a final word. v0.1 ships with its open points named and a path for anyone to propose changes.</li>
+          </ul>
+        </div>
+        <div class="is">
+          <h3>This is</h3>
+          <ul class="plain">
+            <li>Three hours of generative conversation and drafting, with sixteen people who define the term differently on purpose.</li>
+            <li>An open-source definition in a public repository, with named contributors, named adopters, and changes by pull request.</li>
+            <li>A first attempt at interoperability between research, policy, and product language.</li>
+            <li>Open to anyone with a definition and a failure case.</li>
+            <li>Free to attend for selected participants.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="submit" id="submit">
+    <div class="wrap">
+      <span class="eyebrow">Call for participation</span>
+      <h2>Submit a position statement</h2>
+      <p>Answer the four questions below, or paste a link to a one to two page statement you have already written. Submitting sends an email to the organizers from your own mail client, so you can attach a PDF before it goes.</p>
+
+      <div class="steps">
+        <div class="step"><span class="date">16 September</span><b>Statements due</b>23:59 anywhere on Earth.</div>
+        <div class="step"><span class="date">18 September</span><b>Selections confirmed</b>Everyone who submits hears back.</div>
+        <div class="step"><span class="date">8 October</span><b>Pre-read circulated</b>All statements plus a synthesis brief.</div>
+      </div>
+
+      <form class="card" id="form" novalidate>
+        <div class="grid2">
+          <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+          <div class="field full"><label for="affil">Affiliation and role</label><input type="text" id="affil" name="affil" placeholder="e.g. Trust &amp; Safety lead, Acme AI" required></div>
+
+          <div class="field full">
+            <label>Which seat are you submitting for?</label>
+            <div class="seats">
+              <label class="seat"><input type="radio" name="seat" value="Researcher / philosopher" required><span>Researcher or philosopher<small>Ethics, HCI, evaluation, philosophy</small></span></label>
+              <label class="seat"><input type="radio" name="seat" value="Policy / regulation"><span>Policy &amp; regulation<small>Regulators, standards, legislative</small></span></label>
+              <label class="seat"><input type="radio" name="seat" value="Practitioner"><span>Practitioner<small>Product, T&amp;S, evals, design</small></span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="q1">1. Your definition <small>How you or your community currently define humane AI.</small></label>
+            <textarea id="q1" name="q1" data-max="1200"></textarea>
+            <div class="counter" data-for="q1">0 / 1200</div>
+          </div>
+          <div class="field full">
+            <label for="q2">2. Where it comes from <small>The tradition, regulation, product context, or evidence base it rests on.</small></label>
+            <textarea id="q2" name="q2" data-max="800"></textarea>
+            <div class="counter" data-for="q2">0 / 800</div>
+          </div>
+          <div class="field full">
+            <label for="q3">3. Where it fails <small>A concrete case where it was ambiguous, unmeasurable, unenforceable, or in conflict with another definition.</small></label>
+            <textarea id="q3" name="q3" data-max="1500"></textarea>
+            <div class="counter" data-for="q3">0 / 1500</div>
+          </div>
+          <div class="field full">
+            <label for="q4">4. What v0.1 must contain, and what you would use it for</label>
+            <textarea id="q4" name="q4" data-max="800"></textarea>
+            <div class="counter" data-for="q4">0 / 800</div>
+          </div>
+
+          <div class="field full">
+            <label for="link">Link to a written statement <small>optional, if you would rather not use the boxes above</small></label>
+            <input type="url" id="link" name="link" placeholder="https://">
+            <div class="hint">A PDF can also be attached to the email this form opens.</div>
+          </div>
+
+          <div class="field full">
+            <label class="check"><input type="checkbox" name="aies" value="yes"> I am attending AIES 2026 (12–14 October, Malmö Live).</label>
+            <label class="check"><input type="checkbox" name="publish" value="yes"> I consent to my statement being published alongside the v0.1 definition, whether or not I am selected.</label>
+          </div>
+        </div>
+
+        <div class="form-foot">
+          <div class="hint">Nothing is stored on this page. Submitting opens a prefilled email to erika@buildinghumanetech.com; review it, attach a PDF if you like, and send.</div>
+          <button class="btn primary" type="submit">Open email to submit</button>
+        </div>
+        <div class="success" id="success" role="status"><strong>Your email is ready to send.</strong>If it didn't open, copy the text below into a message to <a href="mailto:erika@buildinghumanetech.com">erika@buildinghumanetech.com</a>.<pre id="fallback" style="white-space:pre-wrap;font:13px/1.5 ui-monospace,Menlo,monospace;margin:10px 0 0;max-height:220px;overflow:auto"></pre></div>
+      </form>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section id="people">
+      <span class="eyebrow">People</span>
+      <h2>Organizers</h2>
+      <div class="org">
+        <div><div class="who">Erika Anderson</div><div class="role">Founder &amp; CEO, Building Humane Technology; creator of HumaneBench; co-chair, IEEE subcommittees on AI &amp; Human Flourishing</div></div>
+        <div><div class="who">Marilyn Zhang</div><div class="role">Research Scientist, Evals &amp; Post-Training, Pareto Labs; formerly Google DeepMind</div></div>
+        <div><div class="who">Mark Whiting</div><div class="role">Chief Scientist, Pareto AI; research fellow, University of Pennsylvania</div></div>
+        <div><div class="who">Yaoli Mao</div><div class="role">Principal Experience Researcher, Autodesk; HumaneBench co-author</div></div>
+      </div>
+      <p style="margin-top:20px">Room and co-location generously arranged by the AIES 2026 organizing team at Umeå University and Malmö University.</p>
+    </section>
+
+    <section id="glance">
+      <span class="eyebrow">Key information</span>
+      <h2>At a glance</h2>
+      <div class="glance">
+        <div><div class="k">Date</div><div class="v">Wednesday 15 October 2026</div></div>
+        <div><div class="k">Time</div><div class="v">13:00–16:00 CEST</div></div>
+        <div><div class="k">Venue</div><div class="v">Malmö University (room to follow)</div></div>
+        <div><div class="k">Capacity</div><div class="v">16 participants</div></div>
+        <div><div class="k">Statements due</div><div class="v">16 September 2026, 23:59 AoE</div></div>
+        <div><div class="k">Selections confirmed</div><div class="v">18 September 2026</div></div>
+        <div><div class="k">Pre-read circulated</div><div class="v">8 October 2026</div></div>
+        <div><div class="k">Contact</div><div class="v"><a href="mailto:erika@buildinghumanetech.com">erika@buildinghumanetech.com</a></div></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ornament" aria-hidden="true"><i></i></div>
+    <div>Co-located with the Ninth AAAI/ACM Conference on AI, Ethics, and Society (AIES 2026), Malmö Live, 12–14 October 2026.</div>
+    <div>The session's output, an open-source definition of humane AI, is maintained in a public repository by <a href="https://www.buildinghumanetech.com">Building Humane Technology</a> and released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. See also <a href="https://humanebench.ai">HumaneBench</a>.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('form');
+  var success = document.getElementById('success');
+  var fallback = document.getElementById('fallback');
+
+  // live counters
+  document.querySelectorAll('textarea[data-max]').forEach(function(t){
+    var c = document.querySelector('.counter[data-for="'+t.id+'"]');
+    var max = +t.dataset.max;
+    function upd(){ c.textContent = t.value.length + ' / ' + max; c.classList.toggle('over', t.value.length > max); }
+    t.addEventListener('input', upd); upd();
+  });
+
+  function v(id){ return (document.getElementById(id).value || '').trim(); }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = v('name'), email = v('email'), affil = v('affil'), link = v('link');
+    var seatEl = form.querySelector('input[name=seat]:checked');
+    var missing = [];
+    if(!name) missing.push('name'); if(!email) missing.push('email'); if(!affil) missing.push('affil'); if(!seatEl) missing.push('seat');
+    var hasAnswers = v('q1') || v('q3'); if(!hasAnswers && !link) missing.push('q1');
+    if(missing.length){
+      var first = missing[0] === 'seat' ? form.querySelector('input[name=seat]') : document.getElementById(missing[0]);
+      first.focus(); first.scrollIntoView({block:'center', behavior:'smooth'});
+      return;
+    }
+    var seat = seatEl.value;
+    var aies = form.querySelector('input[name=aies]').checked ? 'Yes' : 'No';
+    var pub = form.querySelector('input[name=publish]').checked ? 'Yes' : 'No';
+    var lines = [
+      'Position statement for Defining Humane AI (AIES 2026 co-located session)',
+      '',
+      'Name: ' + name,
+      'Email: ' + email,
+      'Affiliation and role: ' + affil,
+      'Seat: ' + seat,
+      'Attending AIES: ' + aies,
+      'Consent to publish statement: ' + pub,
+      link ? 'Link to statement: ' + link : '',
+      '',
+      '1. Your definition', v('q1') || '(see attached)', '',
+      '2. Where it comes from', v('q2') || '(see attached)', '',
+      '3. Where it fails', v('q3') || '(see attached)', '',
+      '4. What v0.1 must contain, and what you would use it for', v('q4') || '(see attached)', '',
+      'PDF attached: (attach if applicable)'
+    ].filter(function(l){ return l !== null; });
+    var body = lines.join('\n');
+    var subject = 'Position statement: ' + name + ' (' + seat + ')';
+    var href = 'mailto:erika@buildinghumanetech.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    fallback.textContent = 'To: erika@buildinghumanetech.com\nSubject: ' + subject + '\n\n' + body;
+    success.classList.add('show');
+    window.location.href = href;
+    success.scrollIntoView({block:'nearest', behavior:'smooth'});
+  });
+})();
+</script>
+</body></html>
