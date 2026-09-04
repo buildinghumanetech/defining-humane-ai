@@ -18,7 +18,7 @@ An open-source definition of "humane AI", drafted in a working session co-locate
 
 ## Organizers
 
-Erika Anderson (Building Humane Technology), Marilyn Zhang (Pareto Labs), Mark Whiting (Pareto AI / University of Pennsylvania), Yaoli Mao (Autodesk).
+Erika Anderson (Building Humane Technology), Marilyn Zhang (Pareto AI), Mark Whiting (Pareto AI / University of Pennsylvania), Yaoli Mao (Autodesk).
 
 ## License
 
