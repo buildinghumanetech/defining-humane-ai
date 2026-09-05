@@ -366,10 +366,8 @@
       <ol class="q">
         <li><strong>Your definition.</strong><span>How you or your community currently define humane AI, in your own words or by reference to a framework you use.</span></li>
         <li><strong>Where it comes from.</strong><span>The tradition, regulation, product context, or evidence base it rests on.</span></li>
-        <li><strong>How it falls short.</strong><span>Where it has been tested, stretched, or broken in practice. What nuances have you observed? Where is it ambiguous or unmeasurable? How does it hold up when it travels into another field, whether policy, research, or industry?</span></li>
-        
+        <li><strong>What nuances have you observed?</strong><span>Where it has been tested, stretched, or broken in practice? Where is it ambiguous or unmeasurable? How does it hold up when it travels into another field, whether policy, research, or industry?</span></li>
       </ol>
-      <div class="callout" style="margin-top:24px"><strong>And one more, in your own voice.</strong> Why does this matter to you? Not the institutional case, the personal one: what you have seen, who you are worried about, what you want to be different. Two or three sentences is plenty. This is what makes the reasoning legible to people outside this field, so write it the way you would say it to someone who has never read a benchmark paper. It is published with your statement in the companion white paper.</div>
       <p style="margin-top:20px">Statements are non-archival and non-anonymous. Plain prose in any format; no template, no page style requirements, no references needed unless they help. Write it in an afternoon.</p>
     </section>
 
@@ -453,16 +451,11 @@
             <div class="counter" data-for="q2">0 / 400</div>
           </div>
           <div class="field full">
-            <label for="q3">3. How it falls short <small>Where it has been tested, stretched, or broken in practice. What nuances have you observed? Where is it ambiguous or unmeasurable? How does it hold up when it travels into another field, whether policy, research, or industry?</small></label>
+            <label for="q3">3. What nuances have you observed? <small>Where it has been tested, stretched, or broken in practice? Where is it ambiguous or unmeasurable? How does it hold up when it travels into another field, whether policy, research, or industry?</small></label>
             <textarea id="q3" name="q3" data-max="750"></textarea>
             <div class="counter" data-for="q3">0 / 750</div>
           </div>
 
-          <div class="field full">
-            <label for="why">In your own voice: why does this matter to you? <small>The personal case, not the institutional one. Two or three sentences. Published with your statement.</small></label>
-            <textarea id="why" name="why" data-max="350" style="min-height:90px"></textarea>
-            <div class="counter" data-for="why">0 / 350</div>
-          </div>
           <div class="field full">
             <label for="link">Link to a written statement <small>optional, if you would rather not use the boxes above</small></label>
             <input type="url" id="link" name="link" placeholder="https://">
@@ -561,7 +554,7 @@
       attending_aies: form.querySelector('input[name=aies]').checked ? 'Yes' : 'No',
       consent_to_publish: form.querySelector('input[name=publish]').checked ? 'Yes' : 'No',
       link_to_statement: link || '',
-      q1_definition: v('q1'), q2_where_from: v('q2'), q3_how_it_falls_short: v('q3'),  why_it_matters_to_me: v('why'),
+      q1_definition: v('q1'), q2_where_from: v('q2'), q3_nuances_observed: v('q3'),  
       _gotcha: (form.querySelector('input[name=_gotcha]').value || '')
     };
     btn.disabled = true; var old = btn.textContent; btn.textContent = 'Sending…';
