@@ -362,13 +362,12 @@
 
     <section id="what">
       <h1>What to submit</h1>
-      <p>One page. The statement is the input to synthesis, so its job is to state a definition clearly and show where it breaks, not to argue for it as the winner. Answer five questions:</p>
+      <p>One page. The statement is the input to synthesis, so its job is to state a definition clearly and show where it breaks, not to argue for it as the winner. Answer three questions:</p>
       <ol class="q">
         <li><strong>Your definition.</strong><span>How you or your community currently define humane AI, in your own words or by reference to a framework you use.</span></li>
         <li><strong>Where it comes from.</strong><span>The tradition, regulation, product context, or evidence base it rests on.</span></li>
-        <li><strong>Where it fails.</strong><span>A concrete case where the definition was ambiguous, unmeasurable, unenforceable, or in conflict with another definition you had to work alongside.</span></li>
-        <li><strong>What v1.0 must contain, and what you would use it for.</strong><span>The one or two things a shared definition would need to include for you to adopt it, and the concrete thing you would apply it to: a benchmark, a policy draft, a product principle, a review criterion.</span></li>
-        <li><strong>Who would have to adopt this for it to change anything?</strong><span>Name the specific people or bodies in your world, a standards committee, a regulator's staff, a product organization, a funder, who would need to take up a shared definition for behavior to actually change. Tell us what would make them take it seriously, and what would make them ignore it.</span></li>
+        <li><strong>How it falls short.</strong><span>Where it has been tested, stretched, or broken in practice. What nuances have you observed? Where is it ambiguous or unmeasurable? How does it hold up when it travels into another field, whether policy, research, or industry?</span></li>
+        
       </ol>
       <div class="callout" style="margin-top:24px"><strong>And one more, in your own voice.</strong> Why does this matter to you? Not the institutional case, the personal one: what you have seen, who you are worried about, what you want to be different. Two or three sentences is plenty. This is what makes the reasoning legible to people outside this field, so write it the way you would say it to someone who has never read a benchmark paper. It is published with your statement in the companion white paper.</div>
       <p style="margin-top:20px">Statements are non-archival and non-anonymous. Plain prose in any format; no template, no page style requirements, no references needed unless they help. Write it in an afternoon.</p>
@@ -419,7 +418,7 @@
   <section class="submit" id="submit">
     <div class="wrap">
       <h1>Submit a position statement</h1>
-      <p>Answer the five questions below, or paste a link to a one page statement you have already written. Submitting sends it straight to the organizers; you will see a confirmation here and hear back by 21 September.</p>
+      <p>Answer the three questions below, or paste a link to a one page statement you have already written. Submitting sends it straight to the organizers; you will see a confirmation here and hear back by 21 September.</p>
 
       <div class="steps">
         <div class="step"><span class="date">18 September</span><b>Statements due</b>23:59 anywhere on Earth.</div>
@@ -454,21 +453,11 @@
             <div class="counter" data-for="q2">0 / 400</div>
           </div>
           <div class="field full">
-            <label for="q3">3. Where it fails <small>A concrete case where it was ambiguous, unmeasurable, unenforceable, or in conflict with another definition.</small></label>
+            <label for="q3">3. How it falls short <small>Where it has been tested, stretched, or broken in practice. What nuances have you observed? Where is it ambiguous or unmeasurable? How does it hold up when it travels into another field, whether policy, research, or industry?</small></label>
             <textarea id="q3" name="q3" data-max="750"></textarea>
             <div class="counter" data-for="q3">0 / 750</div>
           </div>
-          <div class="field full">
-            <label for="q4">4. What v1.0 must contain, and what you would use it for</label>
-            <textarea id="q4" name="q4" data-max="400"></textarea>
-            <div class="counter" data-for="q4">0 / 400</div>
-          </div>
 
-          <div class="field full">
-            <label for="q5">5. Who would have to adopt this for it to change anything? <small>Specific people or bodies, what would make them take it seriously, and what would make them ignore it.</small></label>
-            <textarea id="q5" name="q5" data-max="500"></textarea>
-            <div class="counter" data-for="q5">0 / 500</div>
-          </div>
           <div class="field full">
             <label for="why">In your own voice: why does this matter to you? <small>The personal case, not the institutional one. Two or three sentences. Published with your statement.</small></label>
             <textarea id="why" name="why" data-max="350" style="min-height:90px"></textarea>
@@ -481,7 +470,7 @@
           </div>
 
           <div class="field full">
-            <label class="check"><input type="checkbox" name="aies" value="yes"> I am attending AIES 2026 (12–14 October, Malmö Live).</label>
+            <label class="check"><input type="checkbox" name="aies" value="yes"> Are you attending AIES 2026 (12–14 October, Malmö Live)? Tick if yes.</label>
             <label class="check"><input type="checkbox" name="publish" value="yes"> I consent to my statement being published alongside the v1.0 definition, whether or not I am selected.</label>
           </div>
         </div>
@@ -572,7 +561,7 @@
       attending_aies: form.querySelector('input[name=aies]').checked ? 'Yes' : 'No',
       consent_to_publish: form.querySelector('input[name=publish]').checked ? 'Yes' : 'No',
       link_to_statement: link || '',
-      q1_definition: v('q1'), q2_where_from: v('q2'), q3_where_it_fails: v('q3'), q4_v01_and_use: v('q4'), q5_who_must_adopt: v('q5'), why_it_matters_to_me: v('why'),
+      q1_definition: v('q1'), q2_where_from: v('q2'), q3_how_it_falls_short: v('q3'),  why_it_matters_to_me: v('why'),
       _gotcha: (form.querySelector('input[name=_gotcha]').value || '')
     };
     btn.disabled = true; var old = btn.textContent; btn.textContent = 'Sending…';
