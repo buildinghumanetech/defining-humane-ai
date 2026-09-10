@@ -507,7 +507,7 @@
     <section id="glance">
       <h1>Key information</h1>
       <div class="glance">
-        <div><div class="k">Date</div><div class="v">Wednesday 15 October 2026</div></div>
+        <div><div class="k">Date</div><div class="v">Thursday 15 October 2026</div></div>
         <div><div class="k">Time</div><div class="v">13:00–16:00 CEST</div></div>
         <div><div class="k">Venue</div><div class="v">Malmö University (room to follow)</div></div>
         <div><div class="k">Capacity</div><div class="v">16 participants</div></div>
@@ -576,7 +576,7 @@
     fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
       .then(function(r){ return r.ok ? r.json().catch(function(){ return {}; }) : r.json().then(function(j){ throw new Error((j && j.errors && j.errors.map(function(x){return x.message}).join('; ')) || ('HTTP ' + r.status)); }); })
       .then(function(){
-        show('<strong>Received. Thank you, ' + name.split(' ')[0] + '.</strong>Your statement is with the organizers. Everyone who submits hears back by 18 September.', true);
+        show('<strong>Received. Thank you, ' + name.split(' ')[0] + '.</strong>Your statement is with the organizers. Everyone who submits hears back by 21 September.', true);
         form.querySelectorAll('input, textarea, select').forEach(function(el){ if(el.name !== '_gotcha') el.disabled = true; });
         btn.textContent = 'Submitted'; 
       })
