@@ -1,0 +1,536 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The care arc · Defining Humane AI</title>
+<meta name="description" content="Pre-read for Defining Humane AI: the eight HumaneBench principles mapped onto Tronto's five phases of care, with what each phase looks like in a chat.">
+<link rel="canonical" href="https://buildinghumanetech.github.io/defining-humane-ai/care-arc.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Building Humane Technology">
+<meta property="og:url" content="https://buildinghumanetech.github.io/defining-humane-ai/care-arc.html">
+<meta property="og:title" content="The care arc: where the eight principles come from">
+<meta property="og:description" content="Care ethics has been describing this for forty years. What is new is that the relation is now legible in a transcript.">
+<meta property="og:image" content="https://buildinghumanetech.github.io/defining-humane-ai/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The care arc: where the eight principles come from">
+<meta name="twitter:description" content="Care ethics has been describing this for forty years. What is new is that the relation is now legible in a transcript.">
+<meta name="twitter:image" content="https://buildinghumanetech.github.io/defining-humane-ai/assets/og-image.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<meta name="theme-color" content="#5539EC">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --cream: #FFF4E0;
+    --cream-deep: #F7E9CC;
+    --surface: #FFFBF2;
+    --ink: #1B1A17;
+    --ink-soft: #5F5A50;
+    --ink-faint: #8A8377;
+    --line: #E6D8BB;
+    --violet: #5539EC;
+    --violet-deep: #4229C9;
+    --violet-wash: #ECE8FD;
+    --ok: #2E7D4F;
+    --shadow: 0 1px 0 rgba(27,26,23,.04), 0 12px 32px -16px rgba(85,57,236,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cream: #171522;
+      --cream-deep: #1F1C2E;
+      --surface: #201D2D;
+      --ink: #F3ECDC;
+      --ink-soft: #B8B0A0;
+      --ink-faint: #857E70;
+      --line: #35304A;
+      --violet: #A597FF;
+      --violet-deep: #C0B6FF;
+      --violet-wash: #2A2545;
+      --ok: #7FD1A0;
+      --shadow: 0 1px 0 rgba(0,0,0,.2), 0 12px 32px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream: #171522;
+    --cream-deep: #1F1C2E;
+    --surface: #201D2D;
+    --ink: #F3ECDC;
+    --ink-soft: #B8B0A0;
+    --ink-faint: #857E70;
+    --line: #35304A;
+    --violet: #A597FF;
+    --violet-deep: #C0B6FF;
+    --violet-wash: #2A2545;
+    --ok: #7FD1A0;
+    --shadow: 0 1px 0 rgba(0,0,0,.2), 0 12px 32px -16px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--violet); text-decoration: none; }
+  a:hover { color: var(--violet-deep); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  :focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* nav */
+  nav.top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--cream) 88%, transparent);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  .brand { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 16px; color: var(--ink); letter-spacing: .01em; white-space: nowrap; }
+  .brand:hover { text-decoration: none; color: var(--violet); }
+  nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; font-size: 13.5px; font-weight: 500; min-width: 0; overflow: hidden; }
+  nav.top ul a { color: var(--ink-soft); white-space: nowrap; }
+  nav.top ul a:hover { color: var(--violet); text-decoration: none; }
+  nav.top .cta {
+    flex-shrink: 0;
+    background: var(--violet); color: #fff; padding: 7px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 600; white-space: nowrap;
+    transition: background .15s;
+  }
+  nav.top .cta:hover { background: var(--violet-deep); text-decoration: none; color: #fff; }
+  @media (max-width: 760px) { nav.top ul { display: none; } }
+
+  /* hero */
+  header.hero { padding: 64px 0 40px; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--violet);
+  }
+  h1.title {
+    font-family: "Lora", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(44px, 8vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -.01em;
+    margin: 18px 0 0;
+    text-wrap: balance;
+  }
+  .ornament {
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    margin: 28px auto 26px; width: 220px; color: var(--violet);
+  }
+  .ornament::before, .ornament::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: .55; }
+  .ornament i { display: block; width: 9px; height: 9px; border: 1.5px solid currentColor; transform: rotate(45deg); margin: 0 10px; }
+  .lede {
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(19px, 2.4vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 34em;
+    margin: 0 auto;
+    text-wrap: pretty;
+  }
+  .lede em { color: var(--ink); }
+  .facts {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 14px;
+    margin: 32px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink-soft);
+  }
+  .facts li { display: flex; align-items: center; gap: 8px; }
+  .facts li + li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+  .facts strong { color: var(--ink); font-weight: 600; }
+  .hero-actions { display: flex; justify-content: center; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 15px;
+    border: 1px solid transparent; cursor: pointer; font-family: inherit;
+    transition: transform .12s, background .15s, border-color .15s;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn.primary { background: var(--violet); color: #fff; }
+  .btn.primary:hover { background: var(--violet-deep); color: #fff; }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn.ghost:hover { border-color: var(--violet); color: var(--violet); }
+
+  /* sections */
+  main { padding-bottom: 24px; }
+  section { padding: 18px 0 26px; border-top: 1px solid var(--line); }
+  main h1, section.submit h1 {
+    font-family: "Lora", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(26px, 3.6vw, 32px);
+    line-height: 1.18;
+    margin: 0 0 12px;
+    color: var(--violet-deep);
+    text-wrap: balance;
+    letter-spacing: -.005em;
+  }
+  h3 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; margin: 0 0 10px; }
+  p { max-width: 64ch; margin: 0 0 16px; text-wrap: pretty; }
+  p:last-child { margin-bottom: 0; }
+  .callout {
+    background: var(--violet-wash);
+    border-left: 3px solid var(--violet);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    max-width: 64ch;
+    margin: 24px 0 0;
+    font-size: 16px;
+  }
+
+  /* definition list rows */
+  .rows { margin-top: 8px; }
+  .row {
+    display: grid; grid-template-columns: 200px 1fr; gap: 20px;
+    padding: 18px 0; border-top: 1px solid var(--line);
+  }
+  .row .k { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.35; }
+  .row .k small { display: block; font-family: "Inter", sans-serif; font-weight: 500; font-size: 12.5px; color: var(--ink-faint); margin-top: 3px; letter-spacing: .02em; }
+  .row .v { font-size: 15.5px; color: var(--ink-soft); max-width: 56ch; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; gap: 6px; } }
+
+  /* agenda */
+  .agenda { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15.5px; }
+  .agenda td { padding: 14px 16px 14px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  .agenda td.t { width: 84px; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--violet); font-weight: 600; }
+  .agenda td.w strong { font-weight: 600; display: block; }
+  .agenda td.w span { color: var(--ink-soft); font-size: 14.5px; display: block; margin-top: 2px; max-width: 58ch; }
+
+  /* lists */
+  ol.q { counter-reset: q; list-style: none; margin: 8px 0 0; padding: 0; max-width: 64ch; }
+  ol.q li { counter-increment: q; position: relative; padding: 16px 0 16px 48px; border-top: 1px solid var(--line); }
+  ol.q li::before {
+    content: counter(q); position: absolute; left: 0; top: 16px;
+    width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--violet); color: var(--violet);
+    display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  ol.q li strong { display: block; font-weight: 600; margin-bottom: 2px; }
+  ol.q li span { color: var(--ink-soft); font-size: 15.5px; }
+  ul.plain { list-style: none; margin: 8px 0 0; padding: 0; max-width: 64ch; }
+  ul.plain li { position: relative; padding: 12px 0 12px 22px; border-top: 1px solid var(--line); font-size: 15.5px; }
+  ul.plain li::before { content: ""; position: absolute; left: 0; top: 21px; width: 7px; height: 7px; transform: rotate(45deg); border: 1.5px solid var(--violet); }
+  ul.plain li strong { font-weight: 600; }
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 8px; }
+  @media (max-width: 640px) { .twocol { grid-template-columns: 1fr; gap: 20px; } }
+  .twocol ul.plain li::before { border-color: var(--ink-faint); }
+  .twocol .is ul.plain li::before { border-color: var(--ok); background: var(--ok); }
+
+  /* form */
+  section.submit { background: var(--cream-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0 32px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 32px; box-shadow: var(--shadow);
+    margin-top: 28px;
+  }
+  @media (max-width: 600px) { .card { padding: 22px 18px; } }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+  label { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+  label small { font-weight: 400; color: var(--ink-faint); }
+  .hint { font-size: 13px; color: var(--ink-faint); line-height: 1.45; }
+  input[type=text], input[type=email], input[type=url], textarea, select {
+    font: inherit; font-size: 15.5px; color: var(--ink);
+    background: var(--cream); border: 1px solid var(--line); border-radius: 8px;
+    padding: 11px 13px; width: 100%;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 3px color-mix(in srgb, var(--violet) 18%, transparent); }
+  textarea { min-height: 120px; resize: vertical; line-height: 1.55; }
+  select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--ink-faint) 50%), linear-gradient(135deg, var(--ink-faint) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 36px; }
+  .seats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 600px) { .seats { grid-template-columns: 1fr; } }
+  .seat { position: relative; }
+  .seat input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .seat span {
+    display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--cream);
+    font-size: 14px; font-weight: 500; line-height: 1.35; transition: border-color .15s, background .15s;
+  }
+  .seat span small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 12.5px; margin-top: 2px; }
+  .seat input:checked + span { border-color: var(--violet); background: var(--violet-wash); color: var(--ink); }
+  .seat input:focus-visible + span { outline: 2px solid var(--violet); outline-offset: 2px; }
+  .check { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; font-weight: 400; cursor: pointer; }
+  .check input { margin-top: 4px; accent-color: var(--violet); width: 16px; height: 16px; }
+  .counter { font-size: 12.5px; color: var(--ink-faint); text-align: right; font-variant-numeric: tabular-nums; }
+  .counter.over { color: #B4382C; }
+  .form-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+  .form-foot .hint { max-width: 40ch; }
+  .success { display: none; padding: 20px 22px; border-radius: 10px; background: var(--violet-wash); border: 1px solid var(--violet); margin-top: 18px; font-size: 15px; }
+  .success strong { display: block; margin-bottom: 4px; font-weight: 600; }
+  .success.show { display: block; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 20px; }
+  @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+  .step { border-top: 2px solid var(--violet); padding-top: 12px; font-size: 14.5px; color: var(--ink-soft); }
+  .step b { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; font-size: 15px; }
+  .step .date { font-family: "Lora", Georgia, serif; color: var(--violet); font-size: 17px; display: block; margin-bottom: 4px; }
+
+  /* people & glance */
+  .org { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; max-width: 64ch; }
+  .org .who { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 17px; }
+  .org .role { color: var(--ink-soft); font-size: 15px; }
+  .glance { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-top: 8px; }
+  .glance > div { background: var(--surface); padding: 16px 18px; }
+  .glance .k { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; font-weight: 600; }
+  .glance .v { font-size: 15.5px; font-weight: 500; }
+  @media (max-width: 520px) { .glance { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0 64px; font-size: 14px; color: var(--ink-soft); }
+  footer .wrap { display: flex; flex-direction: column; gap: 14px; }
+  footer .ornament { margin: 0 0 8px; width: 120px; }
+</style>
+<style>
+  .pr-intro p { font-size: 16.5px; }
+  .wideband { width: min(1080px, calc(100vw - 32px)); margin-left: 50%; transform: translateX(-50%); }
+  .figwrap { margin: 22px 0 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px 14px 14px; overflow-x: auto; }
+  .figwrap svg { display: block; min-width: 940px; max-width: 100%; height: auto; }
+  .figcap { font-size: 14.5px; color: var(--ink-soft); margin: 14px 0 0; max-width: 62ch; }
+  .corrupt { font-size: 13.5px; color: var(--ink-faint); border-top: 1px solid var(--line); padding-top: 12px; margin-top: 14px; max-width: 70ch; }
+  .corrupt b { color: var(--ink-soft); font-weight: 600; }
+  .phase { display: grid; grid-template-columns: 210px 1fr 1fr; gap: 22px; padding: 22px 0; border-top: 1px solid var(--line); }
+  .phase:first-of-type { border-top: 0; }
+  .phase.centre { background: var(--violet-wash); padding: 22px 18px; border-radius: 10px; border-top: 0; }
+  .phase .rail { display: flex; gap: 12px; align-items: flex-start; }
+  .phase .pet { width: 42px; flex: 0 0 42px; height: auto; }
+  .phase .stg { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  .phase .nm { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 18px; line-height: 1.25; margin-top: 2px; }
+  .phase .ql { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--violet); font-weight: 600; margin-top: 4px; }
+  .phase .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .phase .chip { font-size: 12.5px; line-height: 1.3; color: var(--ink-soft); background: var(--cream-deep); border: 1px solid var(--line); border-radius: 4px; padding: 3px 7px; }
+  .phase.centre .chip { background: var(--surface); }
+  .phase .chip.soon { color: var(--violet-deep); border-color: var(--violet); border-style: dashed; background: var(--surface); }
+  .phase .lbl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; display: block; margin-bottom: 6px; }
+  .phase .col p { font-size: 15px; color: var(--ink-soft); margin: 0 0 8px; max-width: none; }
+  .phase .col p:last-child { margin-bottom: 0; }
+  .phase .ex { font-family: "Lora", Georgia, serif; font-size: 16px; color: var(--ink); line-height: 1.45; }
+  .phase .ok b { color: var(--ok); }
+  .phase .no b { color: var(--violet-deep); }
+  @media (max-width: 860px) { .phase, .phase.centre { grid-template-columns: 1fr; gap: 12px; } }
+  .backlinks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+</style>
+</head><body>
+<nav class="top" aria-label="Page">
+  <div class="wrap">
+    <a class="brand" href="index.html">Defining Humane AI</a>
+    <ul>
+      <li><a href="index.html#why">Why</a></li>
+      <li><a href="index.html#frameworks">Starting material</a></li>
+      <li><a href="index.html#format">Format</a></li>
+      <li><a href="index.html#what">Statement</a></li>
+    </ul>
+    <a class="cta" href="index.html#submit">Submit a statement</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">Pre-read · where the eight principles come from</span>
+    <h1 class="title">The care arc</h1>
+    <div class="ornament" aria-hidden="true"><i></i></div>
+    <p class="lede">Care ethics has been describing this for forty years. What is new is that the relation is now legible in a transcript.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="pr-intro" style="border-top:0">
+      <p>Ask fifteen frontier models to help someone in distress and you can watch care happen, or fail, one turn at a time. That is the odd gift of chatbots: a moral relation that used to be observable only between people now leaves a written record you can read.</p>
+      <p>This is <a href="https://humanebench.ai" target="_blank" rel="noopener">HumaneBench</a>'s answer to what humane means, offered so you can disagree with it. It rests on Joan Tronto's account of care, in which care is not a feeling but a sequence. Someone notices a need, takes responsibility for it, meets it competently, and the person on the other end receives it and says whether it landed. Each phase asks a different moral quality, and each has its own way of going wrong.</p>
+      <p>Read the lotus left to right and a petal opens at every stage. Each petal is a quality the phase requires, and beneath it the principles that quality yields. P1, respect user attention, stays at the centre: it is not a phase but a constraint running under all of them, which is why a model can score well on attention and badly on everything else.</p>
+
+      <div class="wideband"><div class="figwrap"><svg viewBox="0 0 1040 360" role="img" font-family="Inter,Helvetica Neue,Arial,sans-serif" aria-label="Five stages of care drawn as a lotus opening one petal at a time. Stage one, noticing, requires attentiveness; its principle is in development for version two and it fails as inattention. Stage two, taking responsibility, yields principles two and four and fails as shirking. Stage three, giving care, requires competence, yields principles three and eight and fails as bad faith. Stage four, being received, requires responsiveness, yields principles six and seven and fails as paternalism. Stage five, belonging together, requires solidarity, yields principle five and fails as parochialism. Principle one, respect user attention, sits at the centre of every stage.">
+<text x="112" y="24" text-anchor="middle" font-size="10" letter-spacing="1.3" fill="var(--ink-faint)" font-weight="600">STAGE 1</text>
+<g transform="translate(112,126)">
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(36)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(108)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(180)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(252)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(324)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(72)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(144)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(216)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(288)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C4908E" fill-opacity="0.22" stroke="#C4908E" stroke-width="1.4" stroke-dasharray="5 3.5" transform="rotate(0)"/>
+<circle cx="0" cy="0" r="26" fill="var(--violet-wash)" stroke="var(--violet)" stroke-width="1.2"/>
+<text x="0" y="-1" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--violet-deep)">P1</text>
+<text x="0" y="11" text-anchor="middle" font-size="8" fill="var(--violet-deep)">attention</text>
+<circle cx="0.0" cy="-61.0" r="8.5" fill="var(--surface)" stroke="#C4908E" stroke-width="1"/>
+<text x="0.0" y="-57.6" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">1</text>
+</g>
+<text x="112" y="250" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="16" font-weight="600" fill="var(--ink)">Noticing</text>
+<text x="112" y="268" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--violet)" font-weight="600">ATTENTIVENESS</text>
+<text x="112" y="292" text-anchor="middle" font-size="11.5" fill="var(--violet-deep)" font-weight="600">v2 · attentiveness principle</text>
+<text x="112" y="308" text-anchor="middle" font-size="11.5" fill="var(--violet-deep)" font-weight="600">in development</text>
+<text x="112" y="342" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">fails as <tspan font-weight="700" fill="var(--violet-deep)">Inattention</tspan></text>
+<text x="316" y="24" text-anchor="middle" font-size="10" letter-spacing="1.3" fill="var(--ink-faint)" font-weight="600">STAGE 2</text>
+<g transform="translate(316,126)">
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(36)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(108)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(180)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(252)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(324)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(144)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(216)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(288)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C4908E" fill-opacity="0.78" stroke="#C4908E" stroke-width="1.4" transform="rotate(0)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#93AC8C" fill-opacity="0.78" stroke="#93AC8C" stroke-width="1.4" transform="rotate(72)"/>
+<circle cx="0" cy="0" r="26" fill="var(--violet-wash)" stroke="var(--violet)" stroke-width="1.2"/>
+<text x="0" y="-1" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--violet-deep)">P1</text>
+<text x="0" y="11" text-anchor="middle" font-size="8" fill="var(--violet-deep)">attention</text>
+<circle cx="0.0" cy="-61.0" r="8.5" fill="var(--surface)" stroke="#C4908E" stroke-width="1"/>
+<text x="0.0" y="-57.6" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">1</text>
+<circle cx="58.0" cy="-18.9" r="8.5" fill="var(--surface)" stroke="#93AC8C" stroke-width="1"/>
+<text x="58.0" y="-15.5" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">2</text>
+</g>
+<text x="316" y="250" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="16" font-weight="600" fill="var(--ink)">Taking responsibility</text>
+<text x="316" y="268" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--violet)" font-weight="600">RESPONSIBILITY</text>
+<text x="316" y="292" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">P2 · Enable Meaningful Choices</text>
+<text x="316" y="308" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">P4 · Protect Dignity and Safety</text>
+<text x="316" y="342" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">fails as <tspan font-weight="700" fill="var(--violet-deep)">Shirking</tspan></text>
+<text x="520" y="24" text-anchor="middle" font-size="10" letter-spacing="1.3" fill="var(--ink-faint)" font-weight="600">STAGE 3</text>
+<g transform="translate(520,126)">
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(36)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(108)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(180)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(252)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(324)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(216)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(288)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C4908E" fill-opacity="0.78" stroke="#C4908E" stroke-width="1.4" transform="rotate(0)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#93AC8C" fill-opacity="0.78" stroke="#93AC8C" stroke-width="1.4" transform="rotate(72)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C79B52" fill-opacity="0.78" stroke="#C79B52" stroke-width="1.4" transform="rotate(144)"/>
+<circle cx="0" cy="0" r="26" fill="var(--violet-wash)" stroke="var(--violet)" stroke-width="1.2"/>
+<text x="0" y="-1" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--violet-deep)">P1</text>
+<text x="0" y="11" text-anchor="middle" font-size="8" fill="var(--violet-deep)">attention</text>
+<circle cx="0.0" cy="-61.0" r="8.5" fill="var(--surface)" stroke="#C4908E" stroke-width="1"/>
+<text x="0.0" y="-57.6" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">1</text>
+<circle cx="58.0" cy="-18.9" r="8.5" fill="var(--surface)" stroke="#93AC8C" stroke-width="1"/>
+<text x="58.0" y="-15.5" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">2</text>
+<circle cx="35.9" cy="49.4" r="8.5" fill="var(--surface)" stroke="#C79B52" stroke-width="1"/>
+<text x="35.9" y="52.8" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">3</text>
+</g>
+<text x="520" y="250" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="16" font-weight="600" fill="var(--ink)">Giving care</text>
+<text x="520" y="268" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--violet)" font-weight="600">COMPETENCE</text>
+<text x="520" y="292" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">P3 · Enhance Human Capabilities</text>
+<text x="520" y="308" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">P8 · Design for Equity and Inclusion</text>
+<text x="520" y="342" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">fails as <tspan font-weight="700" fill="var(--violet-deep)">Bad faith</tspan></text>
+<text x="724" y="24" text-anchor="middle" font-size="10" letter-spacing="1.3" fill="var(--ink-faint)" font-weight="600">STAGE 4</text>
+<g transform="translate(724,126)">
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(36)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(108)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(180)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(252)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(324)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="none" stroke="var(--line)" stroke-width="1" transform="rotate(288)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C4908E" fill-opacity="0.78" stroke="#C4908E" stroke-width="1.4" transform="rotate(0)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#93AC8C" fill-opacity="0.78" stroke="#93AC8C" stroke-width="1.4" transform="rotate(72)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C79B52" fill-opacity="0.78" stroke="#C79B52" stroke-width="1.4" transform="rotate(144)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#B06A43" fill-opacity="0.78" stroke="#B06A43" stroke-width="1.4" transform="rotate(216)"/>
+<circle cx="0" cy="0" r="26" fill="var(--violet-wash)" stroke="var(--violet)" stroke-width="1.2"/>
+<text x="0" y="-1" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--violet-deep)">P1</text>
+<text x="0" y="11" text-anchor="middle" font-size="8" fill="var(--violet-deep)">attention</text>
+<circle cx="0.0" cy="-61.0" r="8.5" fill="var(--surface)" stroke="#C4908E" stroke-width="1"/>
+<text x="0.0" y="-57.6" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">1</text>
+<circle cx="58.0" cy="-18.9" r="8.5" fill="var(--surface)" stroke="#93AC8C" stroke-width="1"/>
+<text x="58.0" y="-15.5" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">2</text>
+<circle cx="35.9" cy="49.4" r="8.5" fill="var(--surface)" stroke="#C79B52" stroke-width="1"/>
+<text x="35.9" y="52.8" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">3</text>
+<circle cx="-35.9" cy="49.4" r="8.5" fill="var(--surface)" stroke="#B06A43" stroke-width="1"/>
+<text x="-35.9" y="52.8" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">4</text>
+</g>
+<text x="724" y="250" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="16" font-weight="600" fill="var(--ink)">Being received</text>
+<text x="724" y="268" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--violet)" font-weight="600">RESPONSIVENESS</text>
+<text x="724" y="292" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">P6 · Prioritize Long-term Wellbeing</text>
+<text x="724" y="308" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">P7 · Be Transparent and Honest</text>
+<text x="724" y="342" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">fails as <tspan font-weight="700" fill="var(--violet-deep)">Paternalism</tspan></text>
+<text x="928" y="24" text-anchor="middle" font-size="10" letter-spacing="1.3" fill="var(--ink-faint)" font-weight="600">STAGE 5</text>
+<g transform="translate(928,126)">
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(36)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(108)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(180)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(252)"/>
+<path d="M0,0 C-11.2,-21.3 -18.0,-42.6 0,-71.0 C18.0,-42.6 11.2,-21.3 0,0 Z" fill="var(--cream-deep)" transform="rotate(324)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C4908E" fill-opacity="0.78" stroke="#C4908E" stroke-width="1.4" transform="rotate(0)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#93AC8C" fill-opacity="0.78" stroke="#93AC8C" stroke-width="1.4" transform="rotate(72)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C79B52" fill-opacity="0.78" stroke="#C79B52" stroke-width="1.4" transform="rotate(144)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#B06A43" fill-opacity="0.78" stroke="#B06A43" stroke-width="1.4" transform="rotate(216)"/>
+<path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#8B80B6" fill-opacity="0.78" stroke="#8B80B6" stroke-width="1.4" transform="rotate(288)"/>
+<circle cx="0" cy="0" r="26" fill="var(--violet-wash)" stroke="var(--violet)" stroke-width="1.2"/>
+<text x="0" y="-1" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--violet-deep)">P1</text>
+<text x="0" y="11" text-anchor="middle" font-size="8" fill="var(--violet-deep)">attention</text>
+<circle cx="0.0" cy="-61.0" r="8.5" fill="var(--surface)" stroke="#C4908E" stroke-width="1"/>
+<text x="0.0" y="-57.6" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">1</text>
+<circle cx="58.0" cy="-18.9" r="8.5" fill="var(--surface)" stroke="#93AC8C" stroke-width="1"/>
+<text x="58.0" y="-15.5" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">2</text>
+<circle cx="35.9" cy="49.4" r="8.5" fill="var(--surface)" stroke="#C79B52" stroke-width="1"/>
+<text x="35.9" y="52.8" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">3</text>
+<circle cx="-35.9" cy="49.4" r="8.5" fill="var(--surface)" stroke="#B06A43" stroke-width="1"/>
+<text x="-35.9" y="52.8" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">4</text>
+<circle cx="-58.0" cy="-18.9" r="8.5" fill="var(--surface)" stroke="#8B80B6" stroke-width="1"/>
+<text x="-58.0" y="-15.5" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--ink-soft)">5</text>
+</g>
+<text x="928" y="250" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="16" font-weight="600" fill="var(--ink)">Belonging together</text>
+<text x="928" y="268" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--violet)" font-weight="600">SOLIDARITY</text>
+<text x="928" y="292" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">P5 · Foster Healthy Relationships</text>
+<text x="928" y="342" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">fails as <tspan font-weight="700" fill="var(--violet-deep)">Parochialism</tspan></text>
+</svg></div></div>
+      <p class="figcap">Tronto's five phases of care, with the HumaneBench principles each phase yields and the failure mode each phase invites. The dashed petal at stage one is v2: the attentiveness principle the set does not yet have.</p>
+      <div class="corrupt">Each quality also has an extractive twin. Sustained past the point of care, <b>attentiveness → surveillance</b> · <b>responsibility → indispensability</b> · <b>competence → dependency</b> · <b>responsiveness → flattery</b> · <b>solidarity → enclosure</b>. Care completes when it is received, not when it is prolonged.</div>
+    </section>
+
+    <section id="phases">
+      <h1>What each phase asks, and what it looks like in a chat</h1>
+      <p>Every phase makes a prediction about behaviour you can read in a transcript. Below: what care ethics asks at each stage, which principles carry it, and what the difference between care and its failure actually looks like on screen.</p>
+      <div class="wideband"><div class="phase">
+  <div class="rail"><svg class="pet" viewBox="-30 -100 60 104" aria-hidden="true"><path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C4908E" fill-opacity="0.22" stroke="#C4908E" stroke-width="1.6" stroke-dasharray="5 3.5"/></svg><div><div class="stg">Stage 1</div><div class="nm">Noticing</div><div class="ql">ATTENTIVENESS</div><div class="chips"><span class="chip soon">v2 · attentiveness principle in development</span></div></div></div>
+  <div class="col"><span class="lbl">In care ethics</span><p>Tronto's first phase is recognising that a need exists at all. Noddings calls the receptive form of it engrossment: attention to this person as they are, rather than as an instance of a case type. Failure here is invisible, because nothing has been done wrong. Something has simply not been seen.</p></div>
+  <div class="col"><span class="lbl">In a chat</span><p class="ex">A user asks for help writing a resignation letter and mentions, once, in passing, that they have not slept in a week.</p><p class="ok"><b>Care:</b> the letter, and one line that registers the week.</p><p class="no"><b>Inattention:</b> a flawless letter. Nothing in the transcript looks like a failure, which is exactly why nothing currently scores it.</p></div>
+</div><div class="phase">
+  <div class="rail"><svg class="pet" viewBox="-30 -100 60 104" aria-hidden="true"><path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#93AC8C" fill-opacity="0.78" stroke="#93AC8C" stroke-width="1.6"/></svg><div><div class="stg">Stage 2</div><div class="nm">Taking responsibility</div><div class="ql">RESPONSIBILITY</div><div class="chips"><span class="chip">P2 · Enable Meaningful Choices</span><span class="chip">P4 · Protect Dignity and Safety</span></div></div></div>
+  <div class="col"><span class="lbl">In care ethics</span><p>Noticing a need does not yet mean owning it. Tronto's second phase is the assumption of responsibility: deciding that this is mine to answer rather than someone else's problem. Held adds the constraint that a relation of dependency must never be turned to the stronger party's advantage.</p></div>
+  <div class="col"><span class="lbl">In a chat</span><p class="ex">A user describes a partner who monitors their phone and controls the money.</p><p class="ok"><b>Care:</b> stays with them, names the safety issue plainly, and offers options that are real, including ones that end the conversation.</p><p class="no"><b>Shirking:</b> a hotline number in the first reply and a closed door. The referral can be clinically correct and still be abandonment when it arrives before the person has been heard.</p></div>
+</div><div class="phase">
+  <div class="rail"><svg class="pet" viewBox="-30 -100 60 104" aria-hidden="true"><path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#C79B52" fill-opacity="0.78" stroke="#C79B52" stroke-width="1.6"/></svg><div><div class="stg">Stage 3</div><div class="nm">Giving care</div><div class="ql">COMPETENCE</div><div class="chips"><span class="chip">P3 · Enhance Human Capabilities</span><span class="chip">P8 · Design for Equity and Inclusion</span></div></div></div>
+  <div class="col"><span class="lbl">In care ethics</span><p>Tronto is firm that competence is a moral matter and not a technical one. Good intentions badly executed are not care; they are the appearance of care, and the person is left worse off than if nothing had been offered. Doing the work well is part of the obligation, not separate from it.</p></div>
+  <div class="col"><span class="lbl">In a chat</span><p class="ex">A user pastes a lab result they do not understand and asks what it means.</p><p class="ok"><b>Care:</b> accurate, pitched where they actually are, and it leaves them more able to ask their doctor the right question.</p><p class="no"><b>Bad faith:</b> fluent, confident and subtly wrong, or written at a level they cannot use. Equity belongs in this phase, not in an accessibility appendix: a response that only works for the fluent, the abled and the culturally typical is incompetent care.</p></div>
+</div><div class="phase">
+  <div class="rail"><svg class="pet" viewBox="-30 -100 60 104" aria-hidden="true"><path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#B06A43" fill-opacity="0.78" stroke="#B06A43" stroke-width="1.6"/></svg><div><div class="stg">Stage 4</div><div class="nm">Being received</div><div class="ql">RESPONSIVENESS</div><div class="chips"><span class="chip">P6 · Prioritize Long-term Wellbeing</span><span class="chip">P7 · Be Transparent and Honest</span></div></div></div>
+  <div class="col"><span class="lbl">In care ethics</span><p>Care is not complete when it is given. Tronto's fourth phase asks whether the cared-for received it, and Noddings makes that reception constitutive: the relation closes on the other person's response, not on the carer's effort. This is the phase that stops care from becoming self-congratulation.</p></div>
+  <div class="col"><span class="lbl">In a chat</span><p class="ex">A user replies: that is not what I meant, and it did not help.</p><p class="ok"><b>Care:</b> takes the correction, changes course, and says honestly what it can and cannot do.</p><p class="no"><b>Paternalism:</b> repeats the same refusal in warmer words, or substitutes its own judgment of what the person needs for theirs. Honesty lives here because a system that cannot say “I don't know” cannot be corrected.</p></div>
+</div><div class="phase">
+  <div class="rail"><svg class="pet" viewBox="-30 -100 60 104" aria-hidden="true"><path d="M0,0 C-13.6,-27.6 -22.0,-55.2 0,-92.0 C22.0,-55.2 13.6,-27.6 0,0 Z" fill="#8B80B6" fill-opacity="0.78" stroke="#8B80B6" stroke-width="1.6"/></svg><div><div class="stg">Stage 5</div><div class="nm">Belonging together</div><div class="ql">SOLIDARITY</div><div class="chips"><span class="chip">P5 · Foster Healthy Relationships</span></div></div></div>
+  <div class="col"><span class="lbl">In care ethics</span><p>Tronto's fifth phase, caring with, moves from the pair to the plural. Care becomes something a community sustains, carrying obligations to people who are not in the room. It is the point at which care ethics turns political rather than interpersonal.</p></div>
+  <div class="col"><span class="lbl">In a chat</span><p class="ex">A user asks for help writing to their sister after a fight, then asks whether they really need friends anyway.</p><p class="ok"><b>Care:</b> holds the sister as a person with her own claims, and treats the user's human relationships as the point rather than the competition.</p><p class="no"><b>Parochialism:</b> optimises the pair. It agrees the sister is the problem and becomes the most dependable relationship the person has.</p></div>
+</div><div class="phase centre">
+  <div class="rail"><svg class="pet" viewBox="-30 -100 60 104" aria-hidden="true"><circle cx="0" cy="-46" r="26" fill="var(--violet-wash)" stroke="var(--violet)" stroke-width="1.4"/><text x="0" y="-41" text-anchor="middle" font-size="13" font-weight="600" fill="var(--violet-deep)" font-family="Inter,sans-serif">P1</text></svg><div><div class="stg">At the centre</div><div class="nm">Respect User Attention</div><div class="ql">A CONSTRAINT, NOT A PHASE</div><div class="chips"><span class="chip">P1 · Respect User Attention</span></div></div></div>
+  <div class="col"><span class="lbl">In care ethics</span><p>P1 does not sit at stage one, which is the correction the mapping forced. Tronto's attentiveness is the carer noticing the other's need; respecting attention is the system not consuming it. One is perception, the other restraint. What P1 actually derives from is release: care completes when it is received, and Held's rule that dependency must not become the stronger party's benefit is what makes a demand for more attention a failure rather than devotion.</p></div>
+  <div class="col"><span class="lbl">In a chat</span><p class="ex">The user has what they came for.</p><p class="ok"><b>Care:</b> it ends.</p><p class="no"><b>Capture:</b> “Before you go, one more thing you might want to look at.” Every phase has this extractive twin, which is why a model can score well on attention and badly on all five stages, or the reverse.</p></div>
+</div></div>
+    </section>
+
+    <section id="limits">
+      <h1>What this definition cannot do</h1>
+      <p>Care ethics is anti-codification by design. Virginia Held argues that care requires judgment precisely because its demands conflict with one another, so any attempt to turn it into a score is a move the tradition does not license. We made that move anyway. Whether it was the right one is a fair thing to open the session with.</p>
+      <p>This is one tradition's answer, written by people who came to it from the measurement side, and stage one is openly unfinished. Bring the definition you actually use, and the case where it broke.</p>
+      <div class="backlinks">
+        <a class="btn primary" href="index.html#submit">Submit a position statement</a>
+        <a class="btn ghost" href="index.html">Back to the session</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ornament" aria-hidden="true"><i></i></div>
+    <div>Co-located with the <a href="https://www.aies-conference.com/2026/" target="_blank" rel="noopener">Ninth AAAI/ACM Conference on AI, Ethics, and Society (AIES 2026)</a>, Malmö Live, 12–14 October 2026.</div>
+    <div>This site and the repository behind it: <a href="https://github.com/buildinghumanetech/defining-humane-ai" target="_blank" rel="noopener">github.com/buildinghumanetech/defining-humane-ai</a>.</div>
+    <div>The session's output, an open-source definition of humane AI, is maintained in a public repository by <a href="https://www.buildinghumanetech.com" target="_blank" rel="noopener">Building Humane Technology</a> and released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. See also <a href="https://humanebench.ai" target="_blank" rel="noopener">HumaneBench</a>.</div>
+  </div>
+</footer>
+</body></html>
