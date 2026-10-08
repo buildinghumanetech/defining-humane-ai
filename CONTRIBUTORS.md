@@ -2,14 +2,14 @@
 
 ## Organizers
 
-- Erika Anderson, Building Humane Technology
+- Erika Anderson, Building Humane Tech
 - Marilyn Zhang, Pareto AI
 - Mark Whiting, Pareto AI; University of Pennsylvania
 - Yaoli Mao, Autodesk
 
 ## v1.0 contributors
 
-Added after the session on 15 October 2026.
+Added after the session on Thursday, October 15th, 2026.
 
 ## Position statement authors
 

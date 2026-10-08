@@ -10,7 +10,7 @@ The definition is versioned. Anyone can propose a change.
 
 ## Versioning
 
-- `v1.0`: drafted in the room on 15 October 2026.
+- `v1.0`: to be drafted in the room on Thursday, October 15th, 2026.
 - Patch versions (`v1.0.1`) fix wording without changing meaning.
 - Minor versions (`v0.2`) change or add a dimension of the definition.
 - Every version is a git tag. The file for a version is never rewritten after it is tagged; changes go into the next version.
@@ -21,7 +21,7 @@ If your team, office, or lab uses the definition for something real (a benchmark
 
 ## Submit a position statement
 
-Position statements for the October session are submitted through the site, not by PR. Statements are published here in `position-statements/` with the author's consent after the session.
+Position statements for the October session are submitted through the site, not by PR. The deadline is Thursday, October 8th, 2026. Statements will be published here in `position-statements/` with the author's consent after the session.
 
 ## Code of conduct
 
