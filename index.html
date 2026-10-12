@@ -273,6 +273,8 @@
   /* people & glance */
   .org { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; max-width: 64ch; }
   .org .who { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 17px; }
+  .org .who a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .org .who a:hover { color: var(--violet); text-decoration-color: var(--violet); }
   .org .role { color: var(--ink-soft); font-size: 15px; }
   .glance { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-top: 8px; }
   .glance > div { background: var(--surface); padding: 16px 18px; }
@@ -492,10 +494,10 @@
     <section id="people">
       <h1>Organizers</h1>
       <div class="org">
-        <div><div class="who">Erika Anderson</div><div class="role">Founder &amp; CEO, Building Humane Tech; creator of HumaneBench; co-chair, IEEE subcommittees on AI &amp; Human Flourishing</div></div>
-        <div><div class="who">Marilyn Zhang</div><div class="role">Research Scientist, Evals &amp; Post-Training, Pareto AI; formerly Google</div></div>
-        <div><div class="who">Mark Whiting</div><div class="role">Chief Scientist, Pareto AI; research fellow, University of Pennsylvania</div></div>
-        <div><div class="who">Yaoli Mao</div><div class="role">Principal Experience Researcher, Autodesk; HumaneBench co-author</div></div>
+        <div><div class="who"><a href="https://www.linkedin.com/in/erikamanderson/" target="_blank" rel="noopener">Erika Anderson</a></div><div class="role">Founder &amp; CEO, Building Humane Tech; creator of HumaneBench; co-chair, IEEE subcommittees on AI &amp; Human Flourishing</div></div>
+        <div><div class="who"><a href="https://www.linkedin.com/in/marilynmzhang/" target="_blank" rel="noopener">Marilyn Zhang</a></div><div class="role">Research Scientist, Evals &amp; Post-Training, Pareto AI; formerly Google</div></div>
+        <div><div class="who"><a href="https://www.linkedin.com/in/markwhiting/" target="_blank" rel="noopener">Mark Whiting</a></div><div class="role">Chief Scientist, Pareto AI; research fellow, University of Pennsylvania</div></div>
+        <div><div class="who"><a href="https://www.linkedin.com/in/yaoli-mao/" target="_blank" rel="noopener">Yaoli Mao</a></div><div class="role">Principal Experience Researcher, Autodesk; HumaneBench co-author</div></div>
       </div>
       <p style="margin-top:20px">Room and co-location generously arranged by the <a href="https://www.aies-conference.com/2026/" target="_blank" rel="noopener">AIES 2026 organizing team</a> at Umeå University and Malmö University.</p>
     </section>
