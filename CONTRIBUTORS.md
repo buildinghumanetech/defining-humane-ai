@@ -17,6 +17,10 @@
 - Erika Anderson, Building Humane Tech
 - Tom Collins, Member of Parliament for Worcester
 - Marilyn Zhang, Pareto AI
+- Kathleen Cachel, Adept ID
+- Severin Engelmann, Cornell University and Cornell Tech
+- Christine Lehane, independent researcher
+- Sam Webber, UK Parliament
 
 ## Position statement authors
 
