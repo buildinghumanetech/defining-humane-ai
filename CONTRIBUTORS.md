@@ -9,7 +9,14 @@
 
 ## v1.0 contributors
 
-Added after the session on Thursday, October 15th, 2026.
+- Naira Paola Arnez-Jordan, Technical University of Munich
+- Scott Stern, Inflection AI
+- Shanshan Xu, University of Copenhagen
+- Davide Liga, University of Luxembourg
+- Ali Kapadia, The Net Project
+- Erika Anderson, Building Humane Tech
+- Tom Collins, Member of Parliament for Worcester
+- Marilyn Zhang, Pareto AI
 
 ## Position statement authors
 
