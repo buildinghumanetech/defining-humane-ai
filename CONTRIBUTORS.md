@@ -3,7 +3,7 @@
 ## Organizers
 
 - Erika Anderson, Building Humane Tech
-- Marilyn Zhang, Pareto AI
+- Marilyn Zhang, OpenAI
 - Mark Whiting, Pareto AI; University of Pennsylvania
 - Yaoli Mao, Autodesk
 
